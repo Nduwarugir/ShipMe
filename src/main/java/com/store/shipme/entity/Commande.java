@@ -23,6 +23,24 @@ public class Commande {
     @OneToMany(cascade = CascadeType.ALL)
     List<Produits> produits;
 
+    @Column(name = "total_article", scale = 2)
+    private float total_article;
+
+    @Column(name = "total_kg", scale = 2, nullable = false)
+    private float total_kg;
+
+    @Column(name = "frais", scale = 2)
+    private final float frais = 0.02f;
+
+    @Column(name = "commission", scale = 2)
+    private float commission;
+
+    @Column(name = "reception", scale = 2, nullable = false)
+    private float reception;
+
+    @Column(name = "total", scale = 2)
+    private float total;
+
     public Commande() {
         super();
     }
@@ -34,6 +52,19 @@ public class Commande {
     public Commande(Date date, List<Produits> produits) {
         this.date = date;
         this.produits = produits;
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void calculs() {
+        total_article = 0f; total_kg = 0f;
+        produits.forEach(produits1 -> {
+            total_article += produits1.getPrix_fcfa_total();
+            total_kg += produits1.getPoids_total();
+        });
+        commission = 10000;
+        reception = 10000;
+        total = total_article + total_kg + commission + reception;
     }
 
     public void setId(Long id) {
