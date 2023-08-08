@@ -4,6 +4,7 @@ import com.store.shipme.entity.Commande;
 import com.store.shipme.repository.CommandeRepository;
 import com.store.shipme.service.CommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,11 @@ public class CommandeServiceImpl implements CommandeService {
 
     @Override
     public ResponseEntity<String> create(Commande commande) {
-        return null;
+        Commande commande1 = commandeRepository.save(commande);
+        return new ResponseEntity<>(
+                "CREATED: " + commande1,
+                HttpStatus.CREATED
+        );
     }
 
     @Override

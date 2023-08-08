@@ -57,25 +57,95 @@ public class Commande {
     @PrePersist
     @PreUpdate
     private void calculs() {
-        total_article = 0f; total_kg = 0f;
         produits.forEach(produits1 -> {
-            total_article += produits1.getPrix_fcfa_total();
-            total_kg += produits1.getPoids_total();
+            total_article += produits1.getPrix_euro()*produits1.getValue_fcfa()*produits1.getQuantity();
+            total_kg += produits1.getPoids()*produits1.getQuantity();
         });
         commission = 10000;
         reception = 10000;
         total = total_article + total_kg + commission + reception;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
+    public List<Produits> getProduits() {
+        return produits;
+    }
+
     public void setProduits(List<Produits> produits) {
         this.produits = produits;
+    }
+
+    public float getTotal_article() {
+        return total_article;
+    }
+
+    public void setTotal_article(float total_article) {
+        this.total_article = total_article;
+    }
+
+    public float getTotal_kg() {
+        return total_kg;
+    }
+
+    public void setTotal_kg(float total_kg) {
+        this.total_kg = total_kg;
+    }
+
+    public float getFrais() {
+        return frais;
+    }
+
+    public float getCommission() {
+        return commission;
+    }
+
+    public void setCommission(float commission) {
+        this.commission = commission;
+    }
+
+    public float getReception() {
+        return reception;
+    }
+
+    public void setReception(float reception) {
+        this.reception = reception;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Commande{" +
+                "id=" + id +
+                ", date=" + date +
+                ", produits=" + produits +
+                ", total_article=" + total_article +
+                ", total_kg=" + total_kg +
+                ", frais=" + frais +
+                ", commission=" + commission +
+                ", reception=" + reception +
+                ", total=" + total +
+                '}';
     }
 }
