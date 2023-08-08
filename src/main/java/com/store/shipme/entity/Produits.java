@@ -20,10 +20,10 @@ public class Produits {
     @Column(name = "tag", length = 50)
     private String tag;
 
-    @Column(name = "quantity")
+    @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    @Column(name = "prix_euro", scale = 2)
+    @Column(name = "prix_euro", scale = 2, nullable = false)
     private float prix_euro;
 
     @Column(name = "prix_euro_total", scale = 2)
