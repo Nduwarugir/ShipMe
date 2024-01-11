@@ -9,5 +9,7 @@ public interface ProduitsService {
     ResponseEntity<String> create(Produits produits);
     ResponseEntity<String> update(Long id,Produits produits);
     ResponseEntity<String> delete(Long id);
+    ResponseEntity<String> desactivate(Long id);
     List<Produits> getAll();
+    Produits getById(Long id);
 }

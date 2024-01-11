@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/commande")
+@RequestMapping(path = "/api/commandes")
+@CrossOrigin("*")
 public class CommandeController {
 
     private final CommandeService commandeService;
@@ -24,18 +25,29 @@ public class CommandeController {
         return commandeService.create(commande);
     }
 
-    @PostMapping(path = "/update/{id}")
+    @PutMapping(path = "/update/{id}")
     public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Commande commande) {
         return commandeService.update(id, commande);
     }
 
-    @PostMapping(path = "/delete/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {
         return commandeService.delete(id);
     }
 
-    @PostMapping(path = "/read/all")
+    @PutMapping(path = "/desactivate/{id}")
+    public ResponseEntity<String> desactivate(@PathVariable Long id) {
+        return commandeService.desactivate(id);
+    }
+
+    @GetMapping(path = "/read/all")
     public List<Commande> readAll() {
         return commandeService.getAll();
     }
+
+    @GetMapping(path = "/read/id/{id}")
+    public Commande readById(@PathVariable Long id) {
+        return commandeService.getById(id);
+    }
+
 }

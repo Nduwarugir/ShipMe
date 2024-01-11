@@ -24,18 +24,29 @@ public class ProduitsController {
         return produitsService.create(produits);
     }
 
-    @PostMapping(path = "/update/{id}")
+    @PutMapping(path = "/update/{id}")
     public ResponseEntity<String> update(@PathVariable Long id, @RequestBody Produits produits) {
         return produitsService.update(id, produits);
     }
 
-    @PostMapping(path = "/delete/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id) {
         return produitsService.delete(id);
     }
 
-    @PostMapping(path = "/read/all")
+    @PutMapping(path = "/desactivate/{id}")
+    public ResponseEntity<String> desactivate(@PathVariable Long id) {
+        return produitsService.desactivate(id);
+    }
+
+    @GetMapping(path = "/read/all")
     public List<Produits> readAll() {
         return produitsService.getAll();
     }
+
+    @GetMapping(path = "/read/id/{id}")
+    public Produits readById(@PathVariable Long id) {
+        return produitsService.getById(id);
+    }
+
 }
