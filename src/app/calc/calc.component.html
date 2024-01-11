@@ -1,0 +1,266 @@
+<ng-container>
+    <div class="container h-100" style="padding-top: 3%;">
+        <div class="card-group mx-auto my-auto">
+            <div class="col-lg-7 me-3">
+                <form (ngSubmit)="onSubmit()" [formGroup]="form">
+                    <div class="card border-primary" style="height: auto; width: 100%;">
+                        <div class="card-header">
+                            Table
+                        </div>
+                        <div class="card-body" style="height: 100%;">
+                            <h5 class="card-title">Enter Your Data</h5>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="form-group">
+                                        <label for="label">Label</label>
+                                        <input type="text" class="form-control" id="label" placeholder="Label" formControlName="label">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="form-group">
+                                        <label for="tag">Tag</label>
+                                        <input type="text" class="form-control" id="tag" placeholder="Tag" formControlName="tag">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="form-group">
+                                        <label for="quantity">Quantity</label>
+                                        <input type="number" class="form-control" id="quantity" placeholder="Quantity" formControlName="quantity">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="form-group">
+                                        <label for="prix_euro">Prix Euro</label>
+                                        <input type="number" class="form-control" id="prix_euro" placeholder="Prix Euro" formControlName="prix_euro">
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="form-group">
+                                        <label for="poids">Poids</label>
+                                        <input type="number" class="form-control" id="poids" placeholder="Poids" formControlName="poids">
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="d-flex justify-content-end me-3 mt-3 mb-2 mb-lg-3" hidden>
+                                <button [disabled]="form.invalid"
+                                        class="btn btn-primary btn-block gradient-custom-2 border border-color-none"
+                                        type="submit">Enregistrer
+                                </button>
+                                <button (click)="save()" [disabled]="form.invalid && !produits"
+                                        class="btn btn-primary btn-block gradient-custom-2 border border-color-none"
+                                        type="button">Sauvegarder
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row row-cols-1 row-cols-md-3 mt-4">
+                    <div *ngFor="let produit of produits" class="col mb-4">
+                        <div class="card border-primary h-100" style="border-radius: 10px">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-weight: bolder; font-size: large">
+                                    {{ produit.label }}
+                                </h5>
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Label</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.label }}</p>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Tag</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.tag }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Quantity</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.quantity }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Prix Euro</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.prix_euro }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Prix Euro Total</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.prix_euro_total }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Prix FCFA</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.prix_fcfa }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Prix FCFA Total</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.prix_fcfa_total }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Poids</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.poids }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p class="mb-0">Poids Total</p>
+                                    <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                                </div>
+                                <div class="col-sm-12 text-end">
+                                    <p class="card-text mb-0">{{ produit.poids_total }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 ms-3">
+                <div class="card border-primary" style="height: auto; width: 100%;">
+                    <div class="card-header">
+                        Recap
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Récapitulatif</h5>
+                        <div class="row"  *ngIf="produit">
+                            <div class="col-sm-12">
+                                <p class="mb-0">Valeur de l'euro</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end mb-1">
+                                <p class="card-text mb-0">{{ value_euro }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Frais de commission</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end mb-1">
+                                <p class="card-text mb-0">{{ commission }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Marge</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end mb-3">
+                                <p class="card-text mb-0">{{ marge }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Label</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.label }}</p>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <p class="mb-0">Tag</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.tag }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Quantity</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.quantity }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Prix Euro</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.prix_euro }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Prix Euro Total</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.prix_euro_total }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Prix FCFA</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.prix_fcfa }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Prix FCFA Total</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.prix_fcfa_total }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Poids</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.poids }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Poids Total</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ produit.poids_total }}</p>
+                            </div>
+                            <div class="col-sm-12 mt-3">
+                                <p class="mb-0">Total Importation</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end">
+                                <p class="card-text mb-0">{{ total }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="produits" class="card border-primary mt-3" style="height: auto; width: 100%;">
+                    <div class="card-header">
+                        Detail de la commande
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Récapitulatif de la commande</h5>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="mb-0">Nombre de produit</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end mb-1">
+                                <p class="card-text mb-0">{{ produits.length }}</p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="mb-0">Somme totale de l'importation</p>
+                                <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                            </div>
+                            <div class="col-sm-12 text-end mb-1">
+                                <p class="card-text mb-0">{{ total_all }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

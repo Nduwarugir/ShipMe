@@ -1,0 +1,54 @@
+<ng-container>
+    <div class="container h-100" style="padding-top: 3%;">
+        <div class="card border-primary" style="height: auto; width: 100%;">
+            <div class="card-header">
+                Liste des commandes enregistrées
+            </div>
+            <div class="card-body">
+                <div class="table-responsive-sm" *ngIf="listCommandes" style="overflow-x: auto; max-width: 100%;">
+                    <table class="table table-hover table-striped">
+                        <caption>List of commands</caption>
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Total EU</th>
+                                <th scope="col">Total FCFA</th>
+                                <th scope="col">Total Weight</th>
+                                <th scope="col">Check products list</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let commande of listCommandes">
+                                <th scope="row">{{ commande.id }}</th>
+                                <td>{{ commande.date }}</td>
+                                <td>{{ commande.prix_euro_total }}<i class="bi bi-currency-euro"></i></td>
+                                <td>{{ commande.prix_fcfa_total }} FCFA</td>
+                                <td>{{ commande.poids_total }} Kg</td>
+                                <td class="d-flex justify-content-between">
+                                    <span>{{ commande.produits.length }} Products</span>
+                                    <mat-dialog-actions>
+                                        <button type="button" class="btn btn-primary btn-sm" (click)="openDetail(commande.produits)">
+                                            <span class="badge badge-primary">
+                                                Check product's list
+                                                <i class="bi bi-view-list"></i>
+                                            </span>
+                                        </button>
+                                    </mat-dialog-actions>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<div class="modal" id="modal" #modal style="overflow: auto; max-height: 100vh;">
+    <div class="modal-content" #modalContent> <!-- [style]="'top: '+(50+10*(floor(list.length)))+'%'" *ngIf="list" -->
+        <app-popup [listProducts]="list"></app-popup>
+    </div>
+</div>
+
