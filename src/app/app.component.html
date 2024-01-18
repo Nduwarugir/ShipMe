@@ -7,7 +7,7 @@
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/calc']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">Calc</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [hidden]="true">
                 <a class="nav-link" [routerLink]="['/store']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">Store</a>
             </li>
         </ul>

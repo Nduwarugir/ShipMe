@@ -1,19 +1,18 @@
 import { CommonModule } from '@angular/common';
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Product } from '../models/product.model';
-import {commission, marge, value_euro, value_kg} from '../models/global.const.model';
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {PopupComponent} from "./popup/popup.component";
+import { commission, intouch_fees, marge, value_euro, value_kg } from '../models/global.const.model';
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
+import { PopupComponent } from "./popup/popup.component";
 import { CommandeClass } from '../models/commande.model';
 import { CommandeService } from '../services/commmande/commande.service';
-import { Response } from 'express';
 
 @Component({
     selector: 'app-calc',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, MatDialogModule],
+    imports: [ReactiveFormsModule, MatDialogModule],
     templateUrl: './calc.component.html',
     styleUrl: './calc.component.scss'
 })
@@ -28,6 +27,7 @@ export class CalcComponent implements OnInit {
     protected readonly value_kg: number = value_kg;
     protected readonly marge: number = marge;
     protected readonly commission: number = commission;
+    protected readonly intouch_fees: number = intouch_fees;
     protected total!: number;
     protected total_all: number = 0;
 
@@ -51,7 +51,7 @@ export class CalcComponent implements OnInit {
         if (this.form.valid) {
             if (this.produits) this.produits.push(this.produit);
             else this.produits = [this.produit];
-            this.total_all += this.total;
+            this.total_all += this.total * (1 + this.intouch_fees);
             console.log('produits: ', this.produits);
         }
     }

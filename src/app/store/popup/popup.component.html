@@ -1,78 +1,80 @@
 <ng-container>
 
     <div class="row row-cols-1 row-cols-md-4 mt-4">
-        <div *ngFor="let produit of listProducts" class="col mb-4">
-            <div class="card border-primary h-100" style="border-radius: 10px">
-                <div class="card-body">
-                    <h5 class="card-title" style="font-weight: bolder; font-size: large">
-                        {{ produit.label }}
-                    </h5>
-                    <div class="col-sm-12">
-                        <p class="mb-0">Label</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.label }}</p>
-                    </div>
+        @for (produit of listProducts; track $index) {
+            <div class="col mb-4">
+                <div class="card border-primary h-100" style="border-radius: 10px">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bolder; font-size: large">
+                            {{ produit.label }}
+                        </h5>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Label</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.label }}</p>
+                        </div>
 
-                    <div class="col-sm-12">
-                        <p class="mb-0">Tag</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.tag }}</p>
-                    </div>
-                    <div class="col-sm-12">
-                        <p class="mb-0">Quantity</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.quantity }}</p>
-                    </div>
-                    <div class="col-sm-12">
-                        <p class="mb-0">Prix Euro</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.prix_euro }}</p>
-                    </div>
-                    <div class="col-sm-12">
-                        <p class="mb-0">Prix Euro Total</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.prix_euro_total }}</p>
-                    </div>
-                    <div class="col-sm-12">
-                        <p class="mb-0">Prix FCFA</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.prix_fcfa }}</p>
-                    </div>
-                    <div class="col-sm-12">
-                        <p class="mb-0">Prix FCFA Total</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.prix_fcfa_total }}</p>
-                    </div>
-                    <div class="col-sm-12">
-                        <p class="mb-0">Poids</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.poids }}</p>
-                    </div>
-                    <div class="col-sm-12">
-                        <p class="mb-0">Poids Total</p>
-                        <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
-                    </div>
-                    <div class="col-sm-12 text-end">
-                        <p class="card-text mb-0">{{ produit.poids_total }}</p>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Tag</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.tag }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Quantity</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.quantity }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Prix Euro</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.prix_euro }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Prix Euro Total</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.prix_euro_total }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Prix FCFA</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.prix_fcfa }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Prix FCFA Total</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.prix_fcfa_total }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Poids</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.poids }}</p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p class="mb-0">Poids Total</p>
+                            <div class="mx-auto" style="height: 5px; background-color: black; border-radius: 5px"></div>
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            <p class="card-text mb-0">{{ produit.poids_total }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </ng-container>

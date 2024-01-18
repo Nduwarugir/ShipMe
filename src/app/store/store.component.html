@@ -19,24 +19,26 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let commande of listCommandes">
-                                <th scope="row">{{ commande.id }}</th>
-                                <td>{{ commande.date }}</td>
-                                <td>{{ commande.prix_euro_total }}<i class="bi bi-currency-euro"></i></td>
-                                <td>{{ commande.prix_fcfa_total }} FCFA</td>
-                                <td>{{ commande.poids_total }} Kg</td>
-                                <td class="d-flex justify-content-between">
-                                    <span>{{ commande.produits.length }} Products</span>
-                                    <mat-dialog-actions>
-                                        <button type="button" class="btn btn-primary btn-sm" (click)="openDetail(commande.produits)">
-                                            <span class="badge badge-primary">
-                                                Check product's list
-                                                <i class="bi bi-view-list"></i>
-                                            </span>
-                                        </button>
-                                    </mat-dialog-actions>
-                                </td>
-                            </tr>
+                            @for (commande of listCommandes; track $index) {
+                                <tr>
+                                    <th scope="row">{{ commande.id }}</th>
+                                    <td>{{ commande.date }}</td>
+                                    <td>{{ commande.prix_euro_total }}<i class="bi bi-currency-euro"></i></td>
+                                    <td>{{ commande.prix_fcfa_total }} FCFA</td>
+                                    <td>{{ commande.poids_total }} Kg</td>
+                                    <td class="d-flex justify-content-between">
+                                        <span>{{ commande.produits.length }} Products</span>
+                                        <mat-dialog-actions>
+                                            <button type="button" class="btn btn-primary btn-sm" (click)="openDetail(commande.produits)">
+                                                <span class="badge badge-primary">
+                                                    Check product's list
+                                                    <i class="bi bi-view-list"></i>
+                                                </span>
+                                            </button>
+                                        </mat-dialog-actions>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
